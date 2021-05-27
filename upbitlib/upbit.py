@@ -37,7 +37,7 @@ class Upbit(object):
                 #headers['Authorization'] = 'Bearer {0:s}'.format(token.decode('utf-8'))
                 print('__api_query>token:', token)
                 #headers['Authorization'] = 'Bearer {0:s}'.format(token.encode().decode('utf-8'))
-                token = str(token, encoding="utf-8"))
+                token = str(token, encoding="utf-8")
                 print('__api_query>token:', token)
                 headers['Authorization'] = 'Bearer {0:s}'.format(token)
                 #print('__api_query>token decode:', 'Bearer {0:s}'.format(token.encode().decode('utf-8')))
