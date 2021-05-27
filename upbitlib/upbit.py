@@ -33,11 +33,13 @@ class Upbit(object):
                 if query_params is not None:
                     payload['query'] = query_params
                     url = '{0:s}?{1:s}'.format(url, query_params)
-                token = jwt.encode(payload, self.secret_key, algorithm='HS256')
+                #token = jwt.encode(payload, self.secret_key, algorithm='HS256')
+                token = jwt.encode(payload, self.secret_key, algorithm='HS256').decode('utf-8')
                 #headers['Authorization'] = 'Bearer {0:s}'.format(token.decode('utf-8'))
                 print('__api_query>token:', token)
-                headers['Authorization'] = 'Bearer {0:s}'.format(token.encode().decode('utf-8'))
-                print('__api_query>token decode:', 'Bearer {0:s}'.format(token.encode().decode('utf-8')))
+                #headers['Authorization'] = 'Bearer {0:s}'.format(token.encode().decode('utf-8'))
+                headers['Authorization'] = 'Bearer {0:s}'.format(token)
+                #print('__api_query>token decode:', 'Bearer {0:s}'.format(token.encode().decode('utf-8')))
                 req = requests.Request(method, url, headers=headers)
             else:
                 req = requests.Request(method, url, headers=headers, params=query_params)
