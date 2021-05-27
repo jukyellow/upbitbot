@@ -34,7 +34,8 @@ class Upbit(object):
                     payload['query'] = query_params
                     url = '{0:s}?{1:s}'.format(url, query_params)
                 token = jwt.encode(payload, self.secret_key, algorithm='HS256')
-                headers['Authorization'] = 'Bearer {0:s}'.format(token.decode('utf-8'))
+                #headers['Authorization'] = 'Bearer {0:s}'.format(token.decode('utf-8'))
+                headers['Authorization'] = 'Bearer {0:s}'.format(token)
                 req = requests.Request(method, url, headers=headers)
             else:
                 req = requests.Request(method, url, headers=headers, params=query_params)
