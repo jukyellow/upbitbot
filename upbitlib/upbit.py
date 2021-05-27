@@ -37,11 +37,13 @@ class Upbit(object):
                 #headers['Authorization'] = 'Bearer {0:s}'.format(token.decode('utf-8'))
                 print('__api_query>token:', token)
                 headers['Authorization'] = 'Bearer {0:s}'.format(token.encode().decode('utf-8'))
+                print('__api_query>token decode:', 'Bearer {0:s}'.format(token.encode().decode('utf-8')))
                 req = requests.Request(method, url, headers=headers)
             else:
                 req = requests.Request(method, url, headers=headers, params=query_params)
             prepped = s.prepare_request(req)
             response = s.send(prepped)
+            print('response:', response)
         return response.json() if response.status_code is 200 or response.status_code is 201 else None
 
     def get_markets(self):
