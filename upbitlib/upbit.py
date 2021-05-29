@@ -43,6 +43,7 @@ class Upbit(object):
             prepped = s.prepare_request(req)
             response = s.send(prepped)
             print('response:', response)
+            print('response:', response.json())
         return response.json() if response.status_code is 200 or response.status_code is 201 else None
 
     def get_markets(self):
